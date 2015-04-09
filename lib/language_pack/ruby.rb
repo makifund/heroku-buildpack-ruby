@@ -242,6 +242,7 @@ EOF
     instrument 'ruby.setup_language_pack_environment' do
       if ruby_version.jruby?
         ENV["PATH"] += ":bin"
+        ENV["JRUBY_OPTS"] = "--dev"
         ENV["JAVA_TOOL_OPTIONS"] = run(<<-SHELL).chomp
 #{set_jvm_max_heap}
 echo #{default_java_tool_options}
