@@ -249,7 +249,7 @@ SHELL
         if Gem::Version.new(ruby_version.engine_version) >= Gem::Version.new("1.7.12")
           ENV["JRUBY_OPTS"] = "--dev"
         else
-          ENV["JRUBY_OPTS"] = "-Xcompile.invokedynamic=false -Xcompile.mode=OFF -XX:+TieredCompilation -XX:TieredStopAtLevel=1"
+          ENV["JRUBY_OPTS"] = "-Xcompile.invokedynamic=false -Xcompile.mode=OFF -J-XX:+TieredCompilation -J-XX:TieredStopAtLevel=1"
         end
       end
       setup_ruby_install_env
