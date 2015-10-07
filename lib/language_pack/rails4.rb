@@ -98,6 +98,18 @@ WARNING
           precompile_fail(precompile.output)
         end
       end
+      log("sitemap_generation") do
+        sitemap_task = rake.task("sitemap:refresh")
+        return true unless sitemap_task.is_defined?
+
+        sitemap_task.invoke(env: rake_env)
+        if sitemap_task.success?
+          log "sitemap_generation", :status => "success"
+          puts "Sitemap generation completed (#{"%.2f" % sitemap_task.time}s)"
+        else
+          precompile_fail(sitemap_task.output)
+        end
+      end
     end
   end
 
