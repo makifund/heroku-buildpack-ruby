@@ -1,3 +1,4 @@
+require "fileutils"
 require "language_pack"
 require "language_pack/rails3"
 
@@ -94,6 +95,7 @@ WARNING
           cleanup_assets_cache
           @cache.store public_assets_folder
           @cache.store default_assets_cache
+          FileUtils.rm_rf(default_assets_cache)
         else
           precompile_fail(precompile.output)
         end
