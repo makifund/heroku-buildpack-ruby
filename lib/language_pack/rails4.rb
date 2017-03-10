@@ -90,7 +90,7 @@ WARNING
           puts "Asset precompilation completed (#{"%.2f" % precompile.time}s)"
 
           puts "Cleaning assets"
-          rake.task("assets:clean").invoke(env: rake_env)
+          rake.task("assets:clean[0]").invoke(env: rake_env) # 0 = Keep zero previously compiled/fingerprinted files
 
           cleanup_assets_cache
           @cache.store public_assets_folder
