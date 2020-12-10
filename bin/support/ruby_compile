@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 # This script compiles an application so it can run on Heroku.
-# It will install the application's specified verison of Ruby, it's dependencies
+# It will install the application's specified version of Ruby, it's dependencies
 # and certain framework specific requirements (such as calling `rake assets:precompile`
 # for rails apps). You can see all features described in the devcenter
 # https://devcenter.heroku.com/articles/ruby-support
@@ -22,14 +22,5 @@ begin
     end
   end
 rescue Exception => e
-  Kernel.puts " !"
-  e.message.split("\n").each do |line|
-    Kernel.puts " !     #{line.strip}"
-  end
-  Kernel.puts " !"
-  if e.is_a?(BuildpackError)
-    exit 1
-  else
-    raise e
-  end
+  LanguagePack::ShellHelpers.display_error_and_exit(e)
 end
